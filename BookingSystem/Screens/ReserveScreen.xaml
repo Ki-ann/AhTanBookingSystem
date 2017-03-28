@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="BookingSystem.Screens.ReserveScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BookingSystem.Screens"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="700">
+    <Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Margin="10" HorizontalAlignment="Stretch"  Grid.Row="1" Grid.Column="0"  ShowGridLines="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"  />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="55" />
+            </Grid.RowDefinitions>
+            <TextBlock Style="{StaticResource label_style}" HorizontalAlignment="Right" MaxWidth="200" Height="40"   Grid.Row="0" Grid.Column="0">You are renting</TextBlock>
+            <TextBlock Style="{StaticResource label_style}" HorizontalAlignment="Right" MaxWidth="200"  Height="40"   Grid.Row="1" Grid.Column="0">You want to reserve it on </TextBlock>
+            <TextBlock Style="{StaticResource label_style}" HorizontalAlignment="Right" MaxWidth="200"  Height="40"   Grid.Row="2" Grid.Column="0">You wish to pick up at </TextBlock>
+            <TextBlock Style="{StaticResource label_style}" HorizontalAlignment="Right" MaxWidth="200"  Height="40"   Grid.Row="3" Grid.Column="0">Your rental option is </TextBlock>
+            <TextBlock Style="{StaticResource label_value_style}" Name="itemNameTextBlock" Width="200" Height="30"  Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left"></TextBlock>
+            <DatePicker Style="{StaticResource input_style}" Name="reserveDatePickerInput" 
+		    Margin="10,10,0,0"  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Width="200"
+		    VerticalAlignment="Top"/>
+            <ComboBox Style="{StaticResource input_style}" Name="pickUpTimeComboBoxInput"  
+               DisplayMemberPath="TimeSlotName" SelectedValuePath="TimeSlotValue"  Grid.Column="1" Grid.Row="2" />
+            <ComboBox Style="{StaticResource input_style}" Name="rentalOptionComboBoxInput" 
+                  SelectedValuePath="RentalId"
+                  SelectedValue="{Binding Path=Rental}" Grid.Column="1" Grid.Row="3" >
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                <Run Text="{Binding RentalType}" />
+                <Run Text="( SGD " />
+                <Run Text="{Binding RentalPrice}" />
+                <Run Text=")" />            
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Button Content="Submit"
+               Name="submitButton"
+               Style="{StaticResource main_button_style}" 
+               Margin="3"
+		       HorizontalAlignment="Right"
+      		   VerticalAlignment="Top"
+		       Width="100" Grid.Column="1" Grid.Row="4" Click="submitButton_Click"
+		       />
+        </Grid>
+
+
+
+
+
+
+    </Grid>
+</UserControl>
